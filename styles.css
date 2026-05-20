@@ -1,0 +1,138 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100vh;
+    background-color: black;
+    color: aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+.welcome-container {
+    border: 2px solid aliceblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    width: 500px;
+    max-width: 90%;
+    aspect-ratio: 7/5;
+
+    padding: 20px;
+}
+
+.welcome-container p {
+    font-size: 16px;
+    opacity: 0.8;
+}
+
+.input-error {
+    min-height: 20px;
+    color: #ff4d4d;
+    font-size: 14px;
+}
+
+.welcome-container input {
+    width: 70%;
+    padding: 10px;
+
+    background: transparent;
+    border: 2px solid aliceblue;
+    color: aliceblue;
+
+    outline: none;
+    text-align: center;
+    font-size: 16px;
+}
+
+.welcome-container input:focus {
+    border-color: green;
+}
+
+.lobby-container {
+    border: 2px solid aliceblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    width: 900px;
+    max-width: 90%;
+    aspect-ratio: 7/5;
+}
+
+.timer {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.players {
+    width: 100%;
+    border: 1px solid aliceblue;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.player {
+    padding: 5px;
+    border-bottom: 1px solid rgba(240, 248, 255, 0.2);
+}
+
+.chat {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.messages {
+    flex: 1;
+    overflow-y: auto;
+    border: 1px solid aliceblue;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.message {
+    padding: 6px 10px;
+    max-width: 70%;
+    word-break: break-word;
+}
+
+.message.me {
+    align-self: flex-end;
+    background-color: #1e3a1e;
+    border: 1px solid green;
+}
+
+.message.other {
+    align-self: flex-start;
+    background-color: #222;
+    border: 1px solid #555;
+}
+
+.chat input {
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    border: 2px solid aliceblue;
+    color: aliceblue;
+    outline: none;
+}
+
+.chat input:focus {
+    border-color: green;
+}
