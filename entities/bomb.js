@@ -1,0 +1,38 @@
+export class Bomb {
+  constructor(x, y, range = 1) {
+    this.id = crypto.randomUUID();
+    this.x = x;
+    this.y = y;
+    this.range = range;
+    this.duration = 1500;
+  }
+
+  explode(map) {
+    const cells = [{ x: this.x, y: this.y }];
+
+    const directions = [
+      { dx: 0, dy: -1 },
+      { dx: 0, dy: 1 },
+      { dx: -1, dy: 0 },
+      { dx: 1, dy: 0 },
+    ];
+
+    for (const { dx, dy } of directions) {
+      for (let i = 1; i <= this.range; i++) {
+        const nx = this.x + dx * i;
+        const ny = this.y + dy * i;
+
+        if (!map.isWalkable(ny, nx)) {
+          if (map.grid[ny][nx] === map.tiles.block) {
+            cells.push({ x: nx, y: ny });
+          }
+          break;
+        }
+
+        cells.push({ x: nx, y: ny });
+      }
+    }
+
+    return cells;
+  }
+}

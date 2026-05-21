@@ -15,7 +15,7 @@ export function lobbyPage() {
   ]);
 
   const [input, setInput] = useState("chatInput", "");
-  const [timer, setTimer] = useState("timer", 10);
+  const [timer, setTimer] = useState("timer", 1);
 
   if (interval === null && timer > 0) {
     interval = setInterval(() => {
@@ -53,10 +53,10 @@ export function lobbyPage() {
 
     El(
       "div",
-      { class: "players" },
+      { class: "players-lobby" },
       El("h2", {}, "Players: "),
       ...players.map((p) =>
-        El("div", { key: p.id, class: "player" }, p.nickname),
+        El("div", { key: p.id, class: "player-lobby" }, p.nickname),
       ),
     ),
 

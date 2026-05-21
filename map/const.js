@@ -4,7 +4,7 @@ export const TILES = {
   block: 2,
 };
 
-export const DEFAULT_DENSITY = 0.4;
+export const DEFAULT_DENSITY = 0.7;
 
 // for easier readability, we left number but we could totaly use tiles methods
 export const DEFFAULT_GRID = [

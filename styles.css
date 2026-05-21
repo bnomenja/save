@@ -15,6 +15,13 @@ body {
     font-family: Arial, sans-serif;
 }
 
+#app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    outline: none;
+}
+
 .welcome-container {
     border: 2px solid aliceblue;
     display: flex;
@@ -66,7 +73,7 @@ body {
     padding: 20px;
     width: 900px;
     max-width: 90%;
-    aspect-ratio: 7/5;
+    height: 500px;
 }
 
 .timer {
@@ -74,7 +81,7 @@ body {
     font-weight: bold;
 }
 
-.players {
+.players-lobby {
     width: 100%;
     border: 1px solid aliceblue;
     padding: 10px;
@@ -83,7 +90,7 @@ body {
     gap: 5px;
 }
 
-.player {
+.player-lobby {
     padding: 5px;
     border-bottom: 1px solid rgba(240, 248, 255, 0.2);
 }
@@ -94,10 +101,13 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    min-height: 0;
 }
 
 .messages {
     flex: 1;
+    min-height: 0;
+    max-height: 300px;
     overflow-y: auto;
     border: 1px solid aliceblue;
     padding: 10px;
@@ -135,4 +145,197 @@ body {
 
 .chat input:focus {
     border-color: green;
+}
+
+#map {
+    position: relative;
+    display: inline-block;
+}
+
+#ui {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.player-card {
+    border: 1px solid var(--player-color);
+    background-color: color-mix(in srgb, var(--player-color) 8%, transparent);
+    padding: 8px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 130px;
+}
+
+.player-card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.player-avatar-small {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: var(--player-color);
+    color: black;
+    font-weight: bold;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.player-card-name {
+    font-size: 13px;
+    color: var(--player-color);
+    font-weight: bold;
+}
+
+.player-card-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.stat {
+    font-size: 13px;
+    opacity: 0.9;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(17, 40px);
+    grid-template-rows: repeat(13, 40px);
+}
+
+.cell {
+    width: 40px;
+    height: 40px;
+}
+
+.cell.empty {
+    background-color: #1a1a1a;
+}
+
+.cell.wall {
+    background-color: #444;
+    background-image:
+        linear-gradient(135deg, #555 25%, transparent 25%),
+        linear-gradient(225deg, #333 25%, transparent 25%);
+    background-size: 10px 10px;
+}
+
+.cell.block {
+    background-color: #8B4513;
+    border: 1px solid #a0522d;
+    background-image: linear-gradient(135deg, #a0522d 0%, #6b3410 100%);
+}
+
+#players,
+#bombs,
+#powerups {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    translate: var(--px) var(--py);
+    transition: translate 0.1s ease;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: var(--player-color);
+    border: 2px solid color-mix(in srgb, var(--player-color) 60%, white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: top 0.1s, left 0.1s;
+}
+
+.player-label {
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+}
+
+.bomb {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+
+    translate: var(--px) var(--py);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bomb span {
+    font-size: 22px;
+    filter: drop-shadow(0 0 4px red);
+    animation: bomb-pulse 0.6s infinite alternate;
+}
+
+@keyframes bomb-pulse {
+    from {
+        transform: scale(1);
+        filter: drop-shadow(0 0 2px red);
+    }
+
+    to {
+        transform: scale(1.25);
+        filter: drop-shadow(0 0 10px red);
+    }
+}
+
+
+.powerup {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+
+    translate: var(--px) var(--py);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.powerup span {
+    font-size: 20px;
+    animation: float 1.2s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+
+.powerup .range {
+    filter: drop-shadow(0 0 6px orange);
+}
+
+.powerup .maxBombs {
+    filter: drop-shadow(0 0 6px crimson);
+}
+
+.powerup .speed {
+    filter: drop-shadow(0 0 6px lime);
 }

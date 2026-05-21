@@ -22,9 +22,9 @@ export function welcomePage() {
 
     const getSpawn = (playerNumber) => {
       if (playerNumber === 0) return { x: 1, y: 1 };
-      if (playerNumber === 1) return { x: maxRow - 1, y: maxCol - 1 };
-      if (playerNumber === 2) return { x: 1, y: maxCol - 1 };
-      if (playerNumber === 3) return { x: maxRow - 1, y: 1 };
+      if (playerNumber === 1) return { x: maxCol - 1, y: maxRow - 1 };
+      if (playerNumber === 2) return { x: maxCol - 1, y: 1 };
+      if (playerNumber === 3) return { x: 1, y: maxRow - 1 };
     };
 
     const { x, y } = getSpawn(players.length);
