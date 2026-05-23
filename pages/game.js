@@ -2,7 +2,7 @@ import { El, router, useState } from "../mini-framework/index.js";
 import { GameMap } from "../map/generator.js";
 import { handleMove } from "../logic/player.js";
 
-const playerColor = (nickname) => {
+export const playerColor = (nickname) => {
   let hash = 0;
   for (let i = 0; i < nickname.length; i++) {
     hash = nickname.charCodeAt(i) + ((hash << 5) - hash);
@@ -14,10 +14,18 @@ export function gamePage() {
   const [currentPlayer] = useState("currentPlayer");
   const [players] = useState("players");
 
-  if (!currentPlayer || !players || players.length < 2) router.navigate("#");
-
   const gameMap = new GameMap();
   gameMap.generateBlock();
+
+  if (!gameMap) {
+    console.log(gameMap)
+  }
+
+  if (!currentPlayer || !players || !gameMap) return router.navigate("#");
+  if (players.length === 1)  {
+    useState("winner", players[0])
+    return router.navigate("#/result");
+  }
 
   const [map] = useState("map", gameMap);
   const [bombs] = useState("bombs", []);
@@ -62,6 +70,7 @@ export function gamePage() {
             ),
             El("span", { class: "stat" }, `💣 ${p.maxBombs}`),
             El("span", { class: "stat" }, `🔥 ${p.range}`),
+            El("span", { class: "stat" }, `👟 ${p.speed.toFixed(1)}x`),
           ),
         ),
       ),

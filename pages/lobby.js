@@ -55,7 +55,7 @@ export function lobbyPage() {
       "div",
       { class: "players-lobby" },
       El("h2", {}, "Players: "),
-      ...players.map((p) =>
+      players.map((p) =>
         El("div", { key: p.id, class: "player-lobby" }, p.nickname),
       ),
     ),
@@ -66,7 +66,7 @@ export function lobbyPage() {
       El(
         "div",
         { class: "messages" },
-        ...messages.map((m) =>
+        messages.map((m) =>
           El(
             "div",
             {

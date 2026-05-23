@@ -339,3 +339,65 @@ body {
 .powerup .speed {
     filter: drop-shadow(0 0 6px lime);
 }
+
+.result-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.result-title {
+  font-size: 32px;
+  letter-spacing: 4px;
+  opacity: 0.6;
+}
+
+.winner-card {
+  border: 2px solid var(--player-color);
+  padding: 24px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.winner-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--player-color);
+  color: black;
+  font-size: 26px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.winner-nickname {
+  font-size: 22px;
+  color: var(--player-color);
+  font-weight: bold;
+}
+
+.winner-label {
+  font-size: 14px;
+  opacity: 0.7;
+  letter-spacing: 2px;
+}
+
+.result-btn {
+  background: transparent;
+  border: 1px solid aliceblue;
+  color: aliceblue;
+  padding: 10px 28px;
+  font-size: 14px;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+.result-btn:hover {
+  border-color: var(--player-color, aliceblue);
+  color: var(--player-color, aliceblue);
+}

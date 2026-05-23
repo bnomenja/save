@@ -32,7 +32,7 @@ export function welcomePage() {
     const newPlayer = new Player(x, y, nickname);
 
     setCurrentPlayer(newPlayer);
-    setPlayers([...players, newPlayer]);
+    setPlayers([...players, newPlayer, new Player(maxCol -1, 1, "Pierre")]);
 
     return { success: true };
   };

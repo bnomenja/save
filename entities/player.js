@@ -10,12 +10,23 @@ export class Player {
     this.range = 2;
     this.maxlife = 3;
     this.remaininglife = 3;
+    this.speed = 1;
+    this._lastMove = 0;
   }
 
   moove(x, y, direction) {
     this.x = x;
     this.y = y;
     this.direction = direction;
+  }
+
+  canMove() {
+    const cooldown = 200 / this.speed; // speed 1 = 200ms, speed 2 = 100ms
+    return Date.now() - this._lastMove >= cooldown;
+  }
+
+  registerMove() {
+    this._lastMove = Date.now();
   }
 
   canPlaceBomb() {
